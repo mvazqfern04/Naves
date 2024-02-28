@@ -7,15 +7,16 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float maxima_velocidad = 30f;
-    [SerializeField] private float speed = 0.9f;
+    [SerializeField] private float vel_ace= 0.5f;
+    [SerializeField] private float vel_act = 0f;
     private float frenada;
-    [SerializeField] private int rotation = 40;
+    [SerializeField] private int rotation = -3;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        frenada = speed*2f;
+        frenada = vel_ace*2f;
         rb= GetComponent<Rigidbody2D>();
     }
 
@@ -26,24 +27,27 @@ public class Player : MonoBehaviour
         {
             acelerar();
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.S))
         {
             frenar();
         }
         girar(Input.GetAxisRaw("Horizontal")) ;
+        vel_act=rb.velocity.y;
     }
 
     private void acelerar()
     {
-        //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+speed*Time.deltaTime);
-        rb.velocity = Vector2.up*speed;
+        if (rb.velocity.y<=maxima_velocidad)
+        {
+            rb.velocity = rb.transform.up*vel_ace;
+            //rb.transform.Translate();
+        }
     }
     private void frenar()
     {
         if( rb.velocity.y>0f)
         {
-            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y-frenada*Time.deltaTime);
-            rb.velocity = Vector2.down*speed;
+            rb.velocity = Vector2.zero;
         }
         else
         {       

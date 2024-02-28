@@ -223,8 +223,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxima_velocidad: 30
-  speed: 1
-  rotation: -1
+  vel_ace: 6
+  vel_act: 0.21188648
+  rotation: -6
 --- !u!50 &104206918
 Rigidbody2D:
   serializedVersion: 4
