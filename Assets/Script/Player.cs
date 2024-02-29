@@ -7,17 +7,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+<<<<<<< HEAD
     private float speed = 0f;
     [SerializeField] private float velMax;
     [SerializeField] private float rotacion;
 
     private bool isAlive = true;
+=======
+    private Rigidbody2D rb;
+    [SerializeField] private float maxima_velocidad = 30f;
+    [SerializeField] private float vel_ace= 0.5f;
+    [SerializeField] private float vel_act = 0f;
+    private float frenada;
+    [SerializeField] private int rotation = -3;
+>>>>>>> 0777d554187dda61d3679093c4133ca5891cb6a2
 
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
 
+=======
+        frenada = vel_ace*2f;
+        rb= GetComponent<Rigidbody2D>();
+>>>>>>> 0777d554187dda61d3679093c4133ca5891cb6a2
     }
 
     // Update is called once per frame
@@ -27,10 +41,20 @@ public class Player : MonoBehaviour
         {
             move();
         }
+<<<<<<< HEAD
+=======
+        if (Input.GetKey(KeyCode.S))
+        {
+            frenar();
+        }
+        girar(Input.GetAxisRaw("Horizontal")) ;
+        vel_act=rb.velocity.y;
+>>>>>>> 0777d554187dda61d3679093c4133ca5891cb6a2
     }
 
     private void move()
     {
+<<<<<<< HEAD
         float rotacionDirect = Input.GetAxisRaw("Horizontal");
         float movement = Input.GetAxisRaw("Vertical");
 
@@ -41,6 +65,19 @@ public class Player : MonoBehaviour
         else if (rotacionDirect>0)
         {
             transform.Rotate(0f, 0f, -rotacion*Time.deltaTime, Space.Self);
+=======
+        if (rb.velocity.y<=maxima_velocidad)
+        {
+            rb.velocity = rb.transform.up*vel_ace;
+            //rb.transform.Translate();
+        }
+    }
+    private void frenar()
+    {
+        if( rb.velocity.y>0f)
+        {
+            rb.velocity = Vector2.zero;
+>>>>>>> 0777d554187dda61d3679093c4133ca5891cb6a2
         }
         else
         {

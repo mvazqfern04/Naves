@@ -222,8 +222,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416545a70bf758241a7b725a934e2145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   velMax: 5
   rotacion: 200
+=======
+  maxima_velocidad: 30
+  vel_ace: 6
+  vel_act: 0.21188648
+  rotation: -6
+>>>>>>> 0777d554187dda61d3679093c4133ca5891cb6a2
 --- !u!50 &104206918
 Rigidbody2D:
   serializedVersion: 4
